@@ -1,0 +1,263 @@
+(when-let [requires (resolve 'clojure.main/repl-requires)] (clojure.core/apply clojure.core/require @requires))
+clj꞉shadow.user꞉> 
+(when-let [requires (resolve 'clojure.main/repl-requires)] (clojure.core/apply clojure.core/require @requires))
+clj꞉shadow.user꞉> 
+(ns chat.core
+  "P2P terminal chat over Hyperswarm, meant to run on the Bare runtime
+   (directly, or launched via `pear run`) — and to be driven live from
+   a connected REPL (e.g. Calva in VS Code) during development.
+
+   Two ways to send messages once it's running:
+     1. Type a line into the process's stdin + Enter.
+     2. From a connected REPL: (chat.core/send! \"hello\")
+
+   Standalone usage:
+     bare build/index.js [topic-hex]
+     pear run -d . [topic-hex]
+
+   REPL usage (see README for the Calva side):
+     shadow-cljs watch app
+     ;; then connect Calva to the shadow-cljs nREPL, pick build \"app\"
+     (chat.core/status)
+     (chat.core/send! \"hello from the repl\")"
+  (:require ["hyperswarm" :as Hyperswarm]
+            ["b4a" :as b4a]
+            ["crypto" :as crypto]))
+; Syntax error macroexpanding clojure.core/ns at (c:\coding\clojure\bare-pare-chat\src\chat\core.cljs:1:1).
+; ((:require ["hyperswarm" :as Hyperswarm] ["b4a" :as b4a] ["crypto" :as crypto])) - failed: Extra input spec: :clojure.core.specs.alpha/ns-form
+clj꞉chat.core꞉> 
+(ns chat.core
+  "P2P terminal chat over Hyperswarm, meant to run on the Bare runtime
+   (directly, or launched via `pear run`) — and to be driven live from
+   a connected REPL (e.g. Calva in VS Code) during development.
+
+   Two ways to send messages once it's running:
+     1. Type a line into the process's stdin + Enter.
+     2. From a connected REPL: (chat.core/send! \"hello\")
+
+   Standalone usage:
+     bare build/index.js [topic-hex]
+     pear run -d . [topic-hex]
+
+   REPL usage (see README for the Calva side):
+     shadow-cljs watch app
+     ;; then connect Calva to the shadow-cljs nREPL, pick build \"app\"
+     (chat.core/status)
+     (chat.core/send! \"hello from the repl\")"
+  (:require ["hyperswarm" :as Hyperswarm]
+            ["b4a" :as b4a]
+            ["crypto" :as crypto]))
+; Syntax error macroexpanding clojure.core/ns at (c:\coding\clojure\bare-pare-chat\src\chat\core.cljs:1:1).
+; ((:require ["hyperswarm" :as Hyperswarm] ["b4a" :as b4a] ["crypto" :as crypto])) - failed: Extra input spec: :clojure.core.specs.alpha/ns-form
+clj꞉chat.core꞉> 
+(defonce peers (atom {}))
+; Syntax error compiling at (c:\coding\clojure\bare-pare-chat\src\chat\core.cljs:28:1).
+; Unable to resolve symbol: defonce in this context
+clj꞉chat.core꞉> 
+(when-let [requires (resolve 'clojure.main/repl-requires)] (clojure.core/apply clojure.core/require @requires))
+clj꞉shadow.user꞉> 
+(when-let [requires (resolve 'clojure.main/repl-requires)] (clojure.core/apply clojure.core/require @requires))
+clj꞉shadow.user꞉> 
+(defonce peers (atom {}))
+; Syntax error compiling at (c:\coding\clojure\bare-pare-chat\src\chat\core.cljs:28:1).
+; Unable to resolve symbol: defonce in this context
+clj꞉chat.core꞉> 
+(ns chat.core
+  "P2P terminal chat over Hyperswarm, meant to run on the Bare runtime
+   (directly, or launched via `pear run`) — and to be driven live from
+   a connected REPL (e.g. Calva in VS Code) during development.
+
+   Two ways to send messages once it's running:
+     1. Type a line into the process's stdin + Enter.
+     2. From a connected REPL: (chat.core/send! \"hello\")
+
+   Standalone usage:
+     bare build/index.js [topic-hex]
+     pear run -d . [topic-hex]
+
+   REPL usage (see README for the Calva side):
+     shadow-cljs watch app
+     ;; then connect Calva to the shadow-cljs nREPL, pick build \"app\"
+     (chat.core/status)
+     (chat.core/send! \"hello from the repl\")"
+  (:require ["hyperswarm" :as Hyperswarm]
+            ["b4a" :as b4a]
+            ["crypto" :as crypto]))
+; Syntax error macroexpanding clojure.core/ns at (c:\coding\clojure\bare-pare-chat\src\chat\core.cljs:1:1).
+; ((:require ["hyperswarm" :as Hyperswarm] ["b4a" :as b4a] ["crypto" :as crypto])) - failed: Extra input spec: :clojure.core.specs.alpha/ns-form
+clj꞉chat.core꞉> 
+(defn reload!
+  "Called by shadow-cljs after a hot-reload. Intentionally does nothing —
+   the defonce'd swarm/peers keep running across code reloads, so you
+   can redefine send!/handle-connection!/etc. from the REPL without
+   dropping your connections."
+  [])
+; Syntax error compiling at (c:\coding\clojure\bare-pare-chat\src\chat\core.cljs:168:1).
+; Unable to resolve symbol: defn in this context
+clj꞉chat.core꞉> 
+(defn main [& args]
+  (when-not @started?
+    (reset! started? true)
+    (join! (first args))
+    (read-stdin-lines!
+     (fn [line]
+       (when (not= line "")
+         (send! line)))))
+  nil)
+; Syntax error compiling at (c:\coding\clojure\bare-pare-chat\src\chat\core.cljs:158:1).
+; Unable to resolve symbol: defn in this context
+clj꞉chat.core꞉> 
+(chat.core/status)
+; Syntax error compiling at (c:\coding\clojure\bare-pare-chat\src\chat\nice.cljs:3:4).
+; No such var: chat.core/status
+clj꞉chat.nice꞉> 
+(chat.core/status)
+; Syntax error compiling at (c:\coding\clojure\bare-pare-chat\src\chat\nice.cljs:3:1).
+; No such var: chat.core/status
+clj꞉chat.nice꞉> 
+(ns chat.nice
+  "A scratch file for driving the chat app from a connected REPL
+   (Calva, or any nREPL client) — start to finish.
+
+   How to use this file in Calva:
+     1. Make sure `npx shadow-cljs watch app` is running in a terminal
+        (see README.md) and Calva is connected to the `app` build.
+     2. Open this file. Calva's default keybinding for \"evaluate the
+        top-level form the cursor is in\" is alt+enter (Cmd+Enter on
+        Mac) — put your cursor in a form below and hit it, top to
+        bottom.
+     3. Everything below is wrapped in (comment ...) so loading/eval'ing
+        the whole file does nothing by itself — you eval one form at a
+        time as you go."
+  (:require [chat.core :as chat]))
+; Execution error (FileNotFoundException) at chat.nice/eval17299$loading (REPL:1).
+; Could not locate chat/core__init.class, chat/core.clj or chat/core.cljc on classpath.
+clj꞉chat.nice꞉> 
+(ns chat.nice
+  "A scratch file for driving the chat app from a connected REPL
+   (Calva, or any nREPL client) — start to finish.
+
+   How to use this file in Calva:
+     1. Make sure `npx shadow-cljs watch app` is running in a terminal
+        (see README.md) and Calva is connected to the `app` build.
+     2. Open this file. Calva's default keybinding for \"evaluate the
+        top-level form the cursor is in\" is alt+enter (Cmd+Enter on
+        Mac) — put your cursor in a form below and hit it, top to
+        bottom.
+     3. Everything below is wrapped in (comment ...) so loading/eval'ing
+        the whole file does nothing by itself — you eval one form at a
+        time as you go."
+  (:require [chat.core :as chat]))
+; Execution error (FileNotFoundException) at chat.nice/eval17533$loading (REPL:1).
+; Could not locate chat/core__init.class, chat/core.clj or chat/core.cljc on classpath.
+clj꞉chat.nice꞉> 
+(ns chat.nice
+  "A scratch file for driving the chat app from a connected REPL
+   (Calva, or any nREPL client) — start to finish.
+
+   How to use this file in Calva:
+     1. Make sure `npx shadow-cljs watch app` is running in a terminal
+        (see README.md) and Calva is connected to the `app` build.
+     2. Open this file. Calva's default keybinding for \"evaluate the
+        top-level form the cursor is in\" is alt+enter (Cmd+Enter on
+        Mac) — put your cursor in a form below and hit it, top to
+        bottom.
+     3. Everything below is wrapped in (comment ...) so loading/eval'ing
+        the whole file does nothing by itself — you eval one form at a
+        time as you go."
+  (:require [chat.core :as chat]))
+; Execution error (FileNotFoundException) at chat.nice/eval17541$loading (REPL:1).
+; Could not locate chat/core__init.class, chat/core.clj or chat/core.cljc on classpath.
+clj꞉chat.nice꞉> 
+(when-let [requires (resolve 'clojure.main/repl-requires)] (clojure.core/apply clojure.core/require @requires))
+clj꞉shadow.user꞉> 
+(ns chat.nice
+  "A scratch file for driving the chat app from a connected REPL
+   (Calva, or any nREPL client) — start to finish.
+
+   How to use this file in Calva:
+     1. Make sure `npx shadow-cljs watch app` is running in a terminal
+        (see README.md) and Calva is connected to the `app` build.
+     2. Open this file. Calva's default keybinding for \"evaluate the
+        top-level form the cursor is in\" is alt+enter (Cmd+Enter on
+        Mac) — put your cursor in a form below and hit it, top to
+        bottom.
+     3. Everything below is wrapped in (comment ...) so loading/eval'ing
+        the whole file does nothing by itself — you eval one form at a
+        time as you go."
+  (:require [chat.core :as chat]))
+; Execution error (FileNotFoundException) at chat.nice/eval10084$loading (REPL:1).
+; Could not locate chat/core__init.class, chat/core.clj or chat/core.cljc on classpath.
+clj꞉chat.nice꞉> 
+(chat/status)
+; Syntax error compiling at (c:\coding\clojure\bare-pare-chat\src\chat\nice.cljs:28:3).
+; No such namespace: chat
+clj꞉chat.nice꞉> 
+(when-let [requires (resolve 'clojure.main/repl-requires)] (clojure.core/apply clojure.core/require @requires))
+clj꞉shadow.user꞉> 
+; TIPS: You can choose which REPL to use (clj or cljs):
+;    *Calva: REPL Sessions*
+;    (Click the session indicator in the status bar to open it)
+(require '[cljs.repl :refer [apropos dir doc find-doc print-doc pst source]])
+cljs꞉user꞉> 
+(chat/status)
+cljs꞉chat.nice꞉> 
+(chat/join! "put-a-32-byte-hex-topic-here")
+cljs꞉chat.nice꞉> 
+(chat/join! nil)
+cljs꞉chat.nice꞉> 
+(chat/status)
+cljs꞉chat.nice꞉> 
+(chat/send! "hello from the repl")
+cljs꞉chat.nice꞉> 
+(chat/join! "621d4b7061880cb0484b95e3747a73aaab4530a1b43b2f91db9a717c78ba6e1a")
+cljs꞉chat.nice꞉> 
+(chat/send! "hello from the repl")
+cljs꞉chat.nice꞉> 
+(chat/send! "this one too")
+cljs꞉chat.nice꞉> 
+(chat/status)
+cljs꞉chat.nice꞉> 
+(.destroy @chat/swarm)
+cljs꞉chat.nice꞉> 
+(chat/join! nil)
+cljs꞉chat.nice꞉> 
+(chat/join! "621d4b7061880cb0484b95e3747a73aaab4530a1b43b2f91db9a717c78ba6e1a")
+cljs꞉chat.nice꞉> 
+(chat/join! "b057a4711e5075b3c2c08e2292e5ae6631f925fdd230d01131b4e2f403673985")
+cljs꞉chat.nice꞉> 
+(chat/status)
+cljs꞉chat.repl꞉> 
+(chat/send! "hello from the repl")
+cljs꞉chat.repl꞉> 
+(defn broadcast!
+  "Write raw `line` to every currently-connected peer socket."
+  [line]
+  (doseq [[_ socket] @peers]
+    (.write socket (str line "\n"))))
+cljs꞉chat.core꞉> 
+(broadcast! "Hey there")
+cljs꞉chat.core꞉> 
+(chat/send! "hello from the repl")
+cljs꞉chat.repl꞉> 
+(chat/send! "this one too")
+cljs꞉chat.repl꞉> 
+(chat/send! "this one too")
+cljs꞉chat.repl꞉> 
+(chat/send! "this one too")
+cljs꞉chat.repl꞉> 
+(chat/join! "a0d4b53d821e1eee73cd078d5de879e56f70712cf7aa56e52ef43f82bfae9896")
+cljs꞉chat.repl꞉> 
+(chat/status)
+cljs꞉chat.repl꞉> 
+(when-let [requires (resolve 'clojure.main/repl-requires)] (clojure.core/apply clojure.core/require @requires))
+clj꞉shadow.user꞉> 
+; TIPS: You can choose which REPL to use (clj or cljs):
+;    *Calva: REPL Sessions*
+;    (Click the session indicator in the status bar to open it)
+(require '[cljs.repl :refer [apropos dir doc find-doc print-doc pst source]])
+cljs꞉user꞉> 
+(chat/status)
+cljs꞉chat.repl꞉> 
+(chat/status)
+cljs꞉chat.repl꞉> 

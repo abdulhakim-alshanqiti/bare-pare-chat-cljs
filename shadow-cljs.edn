@@ -1,0 +1,17 @@
+{:source-paths ["src"]
+
+ :dependencies []
+
+ ;; shadow-cljs's own nREPL server. Calva connects here first, then
+ ;; picks the "app" build to get a REPL into the running chat process.
+ :nrepl {:port 9000}
+
+ :builds
+ {:app
+  {:target    :node-script
+   :output-to "build/index.js"
+   :main      chat.core/main
+   ;; keep it plain CommonJS-style require() calls for hyperswarm/b4a
+   ;; so the output runs unmodified under both `node` and `bare`.
+   :compiler-options {:optimizations :simple}
+   :devtools  {:after-load chat.core/reload!}}}}
