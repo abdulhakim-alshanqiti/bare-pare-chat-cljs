@@ -3,6 +3,7 @@
 ## you can use the repl to devolpe p2p apps !!
 <img width="1279" height="717" alt="image" src="https://github.com/user-attachments/assets/e70b9f74-2eb1-480c-a0a8-d233bcf82494" />
 
+<img width="1279" height="719" alt="image" src="https://github.com/user-attachments/assets/a15a7343-7235-405f-9ae3-05df5a003775" />
 
 
 A peer-to-peer terminal chat app that runs on Holepunch's **Bare** runtime
