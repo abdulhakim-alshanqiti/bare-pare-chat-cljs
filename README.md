@@ -1,4 +1,9 @@
-# bare-pare-chat
+# bare-pare-chat-clojurescript
+
+## you can use the repl to devolpe p2p apps !!
+<img width="1279" height="717" alt="image" src="https://github.com/user-attachments/assets/e70b9f74-2eb1-480c-a0a8-d233bcf82494" />
+
+
 
 A peer-to-peer terminal chat app that runs on Holepunch's **Bare** runtime
 (and can be launched through **Pear**), written in **ClojureScript**
